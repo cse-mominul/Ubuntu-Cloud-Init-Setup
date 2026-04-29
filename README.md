@@ -17,3 +17,7 @@ git clone https://github.com/cse-mominul/Ubuntu-Cloud-Init-Setup.git
 cd Ubuntu-Cloud-Init-Setup
 chmod +x Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
 sudo ./Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
+systemctl start cloud-init-reset.service
+systemctl enable cloud-init-reset.service
+sudo rm -r Ubuntu-Cloud-Init-Setup
+systemctl status cloud-init-reset.service
