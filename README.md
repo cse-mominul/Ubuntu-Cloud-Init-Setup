@@ -13,7 +13,7 @@ The script automates these critical steps to keep your system in a "template-rea
 ### 1. Direct Execution (Quickest Method)
 Run this single command to download, set permissions, and execute the setup immediately from your repository:
 ```bash
-curl -s [https://raw.githubusercontent.com/cse-mominul/Ubuntu-Cloud-Init-Setup/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh](https://raw.githubusercontent.com/cse-mominul/Ubuntu-Cloud-Init-Setup/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh) | sudo bash
-wget [https://raw.githubusercontent.com/cse-mominul/Ubuntu-Cloud-Init-Setup/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh](https://raw.githubusercontent.com/cse-mominul/Ubuntu-Cloud-Init-Setup/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh)
+git clone https://github.com/cse-mominul/Ubuntu-Cloud-Init-Setup.git
+cd Ubuntu-Cloud-Init-Setup
 chmod +x Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
 sudo ./Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
