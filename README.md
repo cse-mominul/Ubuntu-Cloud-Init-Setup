@@ -1,2 +1,54 @@
-Ubuntu Cloud-Init Auto-Reset SetupThis repository contains a shell script designed to automate the process of resetting cloud-init data and logs on every system boot. It is specifically built for creating Golden Images or VM templates in environments like Proxmox, XCP-ng, or Apache CloudStack where a fresh state is required upon every restart.  🚀 What This Script DoesThe script automates the following steps to ensure your Ubuntu system remains in a "template-ready" state:Wipes Instance Data: Automatically removes existing cloud-init instance data and logs from /var/lib/cloud/.  Clears SSH Keys: Truncates the authorized_keys file for the default user to ensure no old keys persist.  Configures cloud.cfg: Updates /etc/cloud/cloud.cfg to set preserve_hostname: false and ssh_deletekeys: true.  Systemd Integration: Creates and enables a dedicated systemd service (cloud-init-reset.service) that executes before the cloud-init local service starts.  🛠️ How to RunYou can execute this setup directly from your terminal using a single command. Replace the placeholders with your GitHub details:Bashcurl -s https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh | bash
-📋 Step-by-Step InstallationDownload & Execute: The curl command fetches the script and runs it with bash privileges.Script Creation: It creates the reset logic at /usr/local/bin/reset-cloud-init.sh.  Permissions: Grants executable permissions to the reset script.  Service Setup: Configures the systemd service to ensure the reset happens automatically on every boot.  Activation: Reloads the systemd daemon and enables the service.  ⚠️ Important NotesSSH Access: Because this script clears the authorized_keys file on every boot, you must ensure that your cloud environment (via metadata or cloud-init) provides a new SSH key during the deployment of a new VM.  Golden Images: This is intended for template systems only. Do not run this on a production server where you need to persist local configurations across reboots.  Generated for Ubuntu Systems Administration | Cloud Configuration Guide
+# 🚀 Ubuntu Cloud-Init Auto-Reset Setup
+
+This repository provides an automated solution for Ubuntu systems to reset **cloud-init** data and logs on every boot[cite: 1]. It is ideal for building **Golden Images** or VM templates in cloud environments like **Proxmox**, **XCP-ng**, or **Apache CloudStack** where a fresh initialization is required after every restart[cite: 1].
+
+---
+
+## 🛠️ Key Features
+
+The script automates these critical steps to keep your system in a "template-ready" state:
+
+*   **Wipe Instance Data**: Removes all existing cloud-init instance data and logs from `/var/lib/cloud/`[cite: 1].
+*   **Clear SSH Keys**: Truncates the `authorized_keys` file for the default user (`/home/ubuntu/`) to prevent old key persistence[cite: 1].
+*   **Auto-Configure `cloud.cfg`**: Updates `/etc/cloud/cloud.cfg` to ensure `preserve_hostname: false` and `ssh_deletekeys: true`[cite: 1].
+*   **Systemd Integration**: Sets up a custom service that runs **before** the cloud-init local service starts[cite: 1].
+
+---
+
+## 💻 How to Run
+
+### 1. Direct Execution (Recommended)
+Run this single command to download and execute the setup immediately. Replace the placeholders with your GitHub details:
+```bash
+curl -s [https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh) | bash
+wget [https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/Ubuntu-Cloud-Init-Auto-Reset-Setup.sh)
+    ```
+2.  **Grant Permissions**:
+    You must make the script executable[cite: 1]:
+    ```bash
+    chmod +x Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
+    ```
+3.  **Run with Sudo**:
+    ```bash
+    sudo ./Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
+    ```
+
+---
+
+## 📋 Step-by-Step Installation Process
+
+Once executed, the script performs the following[cite: 1]:
+1.  **Script Creation**: Generates the reset logic at `/usr/local/bin/reset-cloud-init.sh`[cite: 1].
+2.  **Permissions**: Grants executable rights to the reset script[cite: 1].
+3.  **Service Configuration**: Creates `/etc/systemd/system/cloud-init-reset.service`[cite: 1].
+4.  **Activation**: Reloads the systemd daemon and enables the service to persist across reboots[cite: 1].
+
+---
+
+## ⚠️ Important Notes
+
+*   **SSH Access**: This script clears the `authorized_keys` file on every boot[cite: 1]. Ensure your cloud environment provides a new SSH key via metadata services to avoid losing access[cite: 1].
+*   **Golden Images Only**: This is intended for **template systems only**[cite: 1]. Do not use this on production servers where local configurations must persist[cite: 1].
+
+---
+> **Generated for Ubuntu Systems Administration | Cloud Configuration Guide**[cite: 1]
