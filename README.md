@@ -19,5 +19,6 @@ chmod +x Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
 sudo ./Ubuntu-Cloud-Init-Auto-Reset-Setup.sh
 systemctl start cloud-init-reset.service
 systemctl enable cloud-init-reset.service
+cd
 sudo rm -r Ubuntu-Cloud-Init-Setup
 systemctl status cloud-init-reset.service
